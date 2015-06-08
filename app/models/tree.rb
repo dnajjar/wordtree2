@@ -6,7 +6,7 @@ class Tree < ActiveRecord::Base
   end 
   
   def auto
-    uri = URI.parse("http://suggestqueries.google.com/complete/search?client=firefox&q=#{@word}")
+    uri = URI.parse("http://suggestqueries.google.com/complete/search?client=firefox&q='#{@word}'")
     uri.read
   end 
 
