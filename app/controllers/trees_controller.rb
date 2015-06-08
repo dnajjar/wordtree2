@@ -1,4 +1,3 @@
-require 'pry'
 class TreesController < ApplicationController
  
  def home
