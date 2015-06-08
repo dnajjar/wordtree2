@@ -1,0 +1,29 @@
+<strong>Your Search:</strong> <%= @word %>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["wordtree"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+          eval('[ ["Phrases"],["'+'<%= @legit[0] %>'+'"],["'+ '<%= @legit[1] %>'+'"],["'+ '<%= @legit[2] %>'+'"],["'+ '<%= @legit[3] %>'+'"],["'+ '<%= @legit[4] %>'+'"],["'+ '<%= @legit[5] %>'+'"],["'+ '<%= @legit[6] %>'+'"],["'+ '<%= @legit[7] %>'+'"],["'+ '<%= @legit[8] %>'+'"],["'+ '<%= @legit[9] %>'+'"]]')
+        );
+
+        var options = {
+          wordtree: {
+            format: 'implicit',
+            word: '<%=@root%>'
+          }
+        };
+
+        var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="wordtree_basic" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wordtree</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+  <title>WordTree</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
-
+<h3>Enter a search term and the tree will populate with google autocomplete suggestions. </h3>
+<p>
+ex: why are computer scientists
+</p>
+<form action="/trees" method="post">
+  <input name="query" />
+  <input type="submit">
+</form>
 <%= yield %>
 
 </body>

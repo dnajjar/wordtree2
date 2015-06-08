@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["wordtree"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+          [ ['Phrases'],
+            ['why are computer scientists important'],
+            ['why are computer scientists rich'],
+            ['why computer scientists count from zero'],
+            ['why do computer scientists confuse christmas and halloween'],
+            ['why do computer scientists need math'],
+            ['why do computer scientists wear costumes on christmas'],
+            ['why do computer scientists think in terms of algorithms'],
+            ['why do computer scientists use linux'],
+            ['why do computer scientists use foo'],
+            ['why do computer scientists need physics']
+          ]
+        );
+
+        var options = {
+          wordtree: {
+            format: 'implicit',
+            word: 'why'
+          }
+        };
+
+        var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="wordtree_basic" style="width: 2000px; height: 500px;"></div>
+  </body>
+</html>
