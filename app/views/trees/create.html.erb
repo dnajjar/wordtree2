@@ -1,4 +1,6 @@
 <strong>Your Search:</strong> <%= @word %>
+</br>
+<strong>Your Location:</strong> <%= @location%>
 <html>
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -8,7 +10,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable(
-          eval('[ ["Phrases"],["'+'<%= @legit[0] %>'+'"],["'+ '<%= @legit[1] %>'+'"],["'+ '<%= @legit[2] %>'+'"],["'+ '<%= @legit[3] %>'+'"],["'+ '<%= @legit[4] %>'+'"],["'+ '<%= @legit[5] %>'+'"],["'+ '<%= @legit[6] %>'+'"],["'+ '<%= @legit[7] %>'+'"],["'+ '<%= @legit[8] %>'+'"],["'+ '<%= @legit[9] %>'+'"]]')
+          eval('[ ["Phrases"],["'+'<%= @auto[0] %>'+'"],["'+ '<%= @auto[1] %>'+'"],["'+ '<%= @auto[2] %>'+'"],["'+ '<%= @auto[3] %>'+'"],["'+ '<%= @auto[4] %>'+'"],["'+ '<%= @auto[5] %>'+'"],["'+ '<%= @auto[6] %>'+'"],["'+ '<%= @auto[7] %>'+'"],["'+ '<%= @auto[8] %>'+'"],["'+ '<%= @auto[9] %>'+'"]]')
         );
 
         var options = {
@@ -24,6 +26,10 @@
     </script>
   </head>
   <body>
-    <div id="wordtree_basic" style="width: 1000px; height: 500px;"></div>
+    <div id="wordtree_basic" style="width: 1500px; height: 500px;"></div>
+    <div id="footer">
+        Read more about word trees <a href="https://developers.google.com/chart/interactive/docs/gallery/wordtree">here</a> and <a href="https://www.jasondavies.com/wordtree/">here</a> 
+      and check out autocomplete poetry <a href="http://www.googlepoetics.com/">here</a>.
+    </div>
   </body>
 </html>

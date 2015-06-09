@@ -6,19 +6,15 @@ class TreesController < ApplicationController
   
   def create
     @word = params["query"]
-    @iso = params["iso_code"]
+    @iso=params["Location"].split(", ")[0]
+    @location = params["Location"].split(", ")[1]
     @root = params["query"].split(" ").first
     tree = Tree.new(@word, @iso)
     @hash = tree.auto
-    @legit = []
+    @auto = []
     @hash["toplevel"]["CompleteSuggestion"].each do |hash|
-       @legit << hash["suggestion"]["data"]
+       @auto << hash["suggestion"]["data"]
     end 
-    # @legit = eval(@array)[1]
   end 
 
-  # private
-  # def tree_params
-  #   # params.require(:query, :iso_code)
-  # end 
 end
