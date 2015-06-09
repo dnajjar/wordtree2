@@ -61,15 +61,6 @@
 </form>
 </div>
 <%= yield %>
-<script>
-  $('.submit').click(function(e){
-  var search = $(".search").val();
-  if (search == ""){
-  e.preventDefault();
-  alert("Please enter a search term");
-    };
-  })
 
-</script>
 </body>
 </html>
