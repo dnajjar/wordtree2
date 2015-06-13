@@ -5,6 +5,7 @@ class TreesController < ApplicationController
  end
   
   def create
+    binding.pry
     @word = params["query"]
     @iso=params["Location"].split(", ")[0]
     @location = params["Location"].split(", ")[1]
