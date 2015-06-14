@@ -5,17 +5,26 @@ class TreesController < ApplicationController
  end
   
   def create
-    binding.pry
     @word = params["query"]
-    @iso=params["Location"].split(", ")[0]
-    @location = params["Location"].split(", ")[1]
+    @iso1=params["location1"].split(", ")[0]
+    @location1 = params["location1"].split(", ")[1]
+    @iso2=params["location2"].split(", ")[0]
+    @location2 = params["location2"].split(", ")[1]
     @root = params["query"].split(" ").first
-    tree = Tree.new(@word, @iso)
-    @hash = tree.auto
-    @auto = []
-    @hash["toplevel"]["CompleteSuggestion"].each do |hash|
-       @auto << hash["suggestion"]["data"]
+    tree1 = Tree.new(@word, @iso1)
+    tree2 = Tree.new(@word, @iso2)
+    @hash1 = tree1.auto
+    @auto1 = []
+    @hash2 = tree2.auto
+    @auto2 = []
+    
+    @hash1["toplevel"]["CompleteSuggestion"].each do |hash|
+       @auto1 << hash["suggestion"]["data"]
     end 
+     @hash2["toplevel"]["CompleteSuggestion"].each do |hash|
+       @auto2 << hash["suggestion"]["data"]
+    end 
+
   end 
 
 end

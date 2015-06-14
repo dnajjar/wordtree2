@@ -9,8 +9,8 @@
       google.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable(
-          eval('[ ["Phrases"],["'+'<%= @auto[0] %>'+'"],["'+ '<%= @auto[1] %>'+'"],["'+ '<%= @auto[2] %>'+'"],["'+ '<%= @auto[3] %>'+'"],["'+ '<%= @auto[4] %>'+'"],["'+ '<%= @auto[5] %>'+'"],["'+ '<%= @auto[6] %>'+'"],["'+ '<%= @auto[7] %>'+'"],["'+ '<%= @auto[8] %>'+'"],["'+ '<%= @auto[9] %>'+'"]]')
+        var data1 = google.visualization.arrayToDataTable(
+          eval('[ ["Phrases"],["'+'<%= @auto1[0] %>'+'"],["'+ '<%= @auto1[1] %>'+'"],["'+ '<%= @auto1[2] %>'+'"],["'+ '<%= @auto1[3] %>'+'"],["'+ '<%= @auto1[4] %>'+'"],["'+ '<%= @auto1[5] %>'+'"],["'+ '<%= @auto1[6] %>'+'"],["'+ '<%= @auto1[7] %>'+'"],["'+ '<%= @auto1[8] %>'+'"],["'+ '<%= @auto1[9] %>'+'"],["'+'<%= @auto2[0] %>'+'"],["'+ '<%= @auto2[1] %>'+'"],["'+ '<%= @auto2[2] %>'+'"],["'+ '<%= @auto2[3] %>'+'"],["'+ '<%= @auto2[4] %>'+'"],["'+ '<%= @auto2[5] %>'+'"],["'+ '<%= @auto2[6] %>'+'"],["'+ '<%= @auto2[7] %>'+'"],["'+ '<%= @auto2[8] %>'+'"],["'+ '<%= @auto2[9] %>'+'"]]')
         );
 
         var options = {
@@ -20,13 +20,16 @@
           }
         };
 
-        var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
-        chart.draw(data, options);
+        var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic1'));
+        chart.draw(data1, options);
+        // var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic2'));
+        // chart.draw(data2, options);
       }
     </script>
   </head>
   <body>
-    <div id="wordtree_basic" style="width: 1500px; height: 500px;"></div>
+    <div id="wordtree_basic1" style="width: 2000px; height: 500px;" class="col-md-12"></div>
+    <!-- <div id="wordtree_basic2" style="width: 1500px; height: 500px;" class="col-md-6"></div> -->
     
   </body>
 </html>
