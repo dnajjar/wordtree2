@@ -1,29 +1,37 @@
 class TreesController < ApplicationController
- 
- def home
+  def home
+  end
 
- end
-  
   def create
+
     @word = params["query"]
+    
     @iso1=params["location1"].split(", ")[0]
     @location1 = params["location1"].split(", ")[1]
-    @iso2=params["location2"].split(", ")[0]
-    @location2 = params["location2"].split(", ")[1]
-    @root = params["query"].split(" ").first
     tree1 = Tree.new(@word, @iso1)
-    tree2 = Tree.new(@word, @iso2)
-    @hash1 = tree1.auto
-    @auto1 = []
-    @hash2 = tree2.auto
-    @auto2 = []
+    @auto1 = tree1.auto
+    # @hash1 = tree1.auto
+    # @auto1 = []
     
-    @hash1["toplevel"]["CompleteSuggestion"].each do |hash|
-       @auto1 << hash["suggestion"]["data"]
+    # @hash1["toplevel"]["CompleteSuggestion"].each do |hash|
+    #    @auto1 << hash["suggestion"]["data"]
+    # end  
+
+    unless params["location2"]=="none"
+      @iso2=params["location2"].split(", ")[0]
+      @location2 = params["location2"].split(", ")[1]
+      tree2 = Tree.new(@word, @iso2)
+      @auto2 = tree2.auto
+      # @auto2 = []
+      # @hash2["toplevel"]["CompleteSuggestion"].each do |hash|
+      #   @auto2 << hash["suggestion"]["data"]
+      # end 
+      @auto3 = Tree.overlap(@auto1,@auto2)
+      binding.pry
+
     end 
-     @hash2["toplevel"]["CompleteSuggestion"].each do |hash|
-       @auto2 << hash["suggestion"]["data"]
-    end 
+
+    @root = params["query"].split(" ").first
 
   end 
 

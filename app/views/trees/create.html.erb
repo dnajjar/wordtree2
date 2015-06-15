@@ -9,21 +9,41 @@
       google.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data1 = google.visualization.arrayToDataTable(
-          eval('[ ["Phrases"],["'+'<%= @auto1[0] %>'+'"],["'+ '<%= @auto1[1] %>'+'"],["'+ '<%= @auto1[2] %>'+'"],["'+ '<%= @auto1[3] %>'+'"],["'+ '<%= @auto1[4] %>'+'"],["'+ '<%= @auto1[5] %>'+'"],["'+ '<%= @auto1[6] %>'+'"],["'+ '<%= @auto1[7] %>'+'"],["'+ '<%= @auto1[8] %>'+'"],["'+ '<%= @auto1[9] %>'+'"],["'+'<%= @auto2[0] %>'+'"],["'+ '<%= @auto2[1] %>'+'"],["'+ '<%= @auto2[2] %>'+'"],["'+ '<%= @auto2[3] %>'+'"],["'+ '<%= @auto2[4] %>'+'"],["'+ '<%= @auto2[5] %>'+'"],["'+ '<%= @auto2[6] %>'+'"],["'+ '<%= @auto2[7] %>'+'"],["'+ '<%= @auto2[8] %>'+'"],["'+ '<%= @auto2[9] %>'+'"]]')
-        );
 
         var options = {
           wordtree: {
             format: 'implicit',
-            word: '<%=@root%>'
-          }
-        };
+            word: '<%=@root%>',
+            colors: ['red', 'black', 'green']
+        }
+      };
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'phrase');
+        data.addColumn('number', 'size');
+        data.addColumn('number', 'color');
+        
+        <%if @auto3%>
+        <%@auto3.each do |phrase|%>
+        data.addRow(["<%= phrase%>", 1, 1]);
+        <%end %>
+        <%end%>
+
+       <%@auto1.each do |phrase|%>
+        data.addRow(["<%= phrase%>", 1, 10]);
+        <%end %>
+
+        <%if @auto2%>
+        <%@auto2.each do |phrase|%>
+        data.addRow(["<%= phrase%>", 1, 0]);
+        <%end %>
+        <%end%>
+
+        
 
         var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic1'));
-        chart.draw(data1, options);
-        // var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic2'));
-        // chart.draw(data2, options);
+      
+        chart.draw((data), options);
+
       }
     </script>
   </head>
