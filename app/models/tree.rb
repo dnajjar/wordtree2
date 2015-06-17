@@ -25,15 +25,8 @@ class Tree < ActiveRecord::Base
       auto
   end 
 
-  def stuff
-    @iso2=params["location2"].split(", ")[0]
-      @location2 = params["location2"].split(", ")[1]
-      tree2 = Tree.new(@word, @iso2)
-      @hash2 = tree2.auto
-      @auto2 = []
-      @hash2["toplevel"]["CompleteSuggestion"].each do |hash|
-        @auto2 << hash["suggestion"]["data"]
-      end
+  def get_auto_array(auto_hash)
+     
     end
 
 end
