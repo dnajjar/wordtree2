@@ -6,8 +6,10 @@
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-     // $("#country1").val("<%=@iso1%>, <%=@location1%>");
-     //  $("#country2").val("<%=@iso2%>, <%=@location2%>"); 
+     $("#country1").val("<%=@iso1%>, <%=@location1%>");
+     <%if @location2 %>
+      $("#country2").val("<%=@iso2%>, <%=@location2%>"); 
+       <%end%>
       google.load("visualization", "1.1", {packages:["wordtree"]});
       google.setOnLoadCallback(drawChart);
 
@@ -54,7 +56,7 @@
   <body>
   <div style="position: relative; left: 200px;">
   <span class="label label-default" style="background-color: orange"><%=@location1%></span>
-  <span class="label label-primary"><%=@location2%></span>
+  <span class="label label-primary" style="background-color: blue"><%=@location2%></span>
   <span class="label label-success" style="background-color: grey">Overlap</span>
   </div>
     <div id="wordtree_basic1" style="width: 2000px; height: 500px;" class="col-md-2"></div>
