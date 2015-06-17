@@ -8,14 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container col-md-8">
 <div class="left">
 <h4>Enter a search term and location to see google's autocomplete suggestions (ex: why are computer scientists) </h4>
-<p>
-
-</p>
+<div style="position: absolute; left: 1000px; top: 50px;">
+  <a href="/random" class="btn btn-info">Random</a>
+</div>
 <form action="/trees" method="post">
 <input name="query" class="search"/>
-<select name="location1">
+<select name="location1" class="btn btn-warning" style="background-color: orange" id="country1">
 <option value="us, United States">United States</option>
 <option value="au, Australia">Australia</option>
 <option value="cn, China">China</option>
@@ -35,7 +36,7 @@
 <option value="za, South-Africa">South Africa</option>
 <option value="uk, UK">United Kingdom</option>
 </select>
-<select name="location2">
+<select name="location2" class="btn btn-primary" id="country2">
 <option value="none">None</option>
 <option value="us, United States">United States</option>
 <option value="au, Australia">Australia</option>
@@ -70,9 +71,13 @@
   })
 
 </script>
+
 <div id="footer">
         Read more about word trees <a href="https://developers.google.com/chart/interactive/docs/gallery/wordtree">here</a> and <a href="https://www.jasondavies.com/wordtree/">here</a> 
       and check out autocomplete poetry <a href="http://www.googlepoetics.com/">here</a>.
     </div>
+  </div>
+</div>
+
 </body>
 </html>
