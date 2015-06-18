@@ -38,7 +38,7 @@ class TreesController < ApplicationController
   end 
 
   def random
-    @word = ["who","what", "where is", "when", "why", "how many times"].sample
+    @word = ["why are", "who is","what is my", "where is my", "why should i", "how many times", "love is", "how do i know", "why is my"].sample
     @country1 = ["us, United States", "eg, Egypt", "kr, South-Korea", "sa, Saudi-Arabia", "in, India"].sample 
     @country2 =  @country1
       while @country2 == @country1
